@@ -14,7 +14,7 @@ namespace FoodOrderApp.Services
         FirebaseClient client;
         public FoodItemService()
         {
-            client = new FirebaseClient("https://foodorderingapp-f8cdb.firebaseio.com/");
+            client = new FirebaseClient(" https://delevery-cb7c7.firebaseio.com/");
         }
 
         public async Task<List<FoodItem>> GetFoodItemsAsync()
@@ -30,8 +30,7 @@ namespace FoodOrderApp.Services
                      Name = f.Object.Name,
                      Price=f.Object.Price,
                      ProductID = f.Object.ProductID,
-                     Rating = f.Object.Rating,
-                     RatingDetail = f.Object.RatingDetail
+                     
                  }).ToList();
             return products;
         }

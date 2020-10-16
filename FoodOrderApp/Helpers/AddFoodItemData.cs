@@ -16,78 +16,74 @@ namespace FoodOrderApp.Helpers
 
         public AddFoodItemData()
         {
-            client = new FirebaseClient("https://foodorderingapp-f8cdb.firebaseio.com/");
+            client = new FirebaseClient(" https://delevery-cb7c7.firebaseio.com/");
             FoodItems = new List<FoodItem>()
             {
                 new FoodItem
                 {
                     ProductID = 1,
                     CategoryID = 1,
+                    PlaceID=5,
                     ImageUrl = "MainBurger",
                     Name = "Burger and Pizza Hub 1",
                     Description = "Burger - Pizza - Breakfast",
-                    Rating = " 4.8",
-                    RatingDetail = " (121 raitings)",
                     HomeSelected = "CompleteHeart",
-                    Price = 45
+                    Price = 100
                 },
                 new FoodItem
                 {
                     ProductID = 2,
                     CategoryID = 1,
+                    PlaceID= 1,
                     ImageUrl = "MainBurger",
                     Name = "Burger and Pizza Hub 2",
                     Description = "Burger - Pizza - Breakfast",
-                    Rating = " 4.8",
-                    RatingDetail = " (121 raitings)",
                     HomeSelected = "EmptyHeart",
-                    Price = 45
+                    Price = 350
                 },
                 new FoodItem
                 {
                     ProductID = 3,
                     CategoryID = 1,
+                    PlaceID=1,
                     ImageUrl = "MainBurger",
                     Name = "Burger and Pizza Hub 3",
                     Description = "Burger - Pizza - Breakfast",
-                    Rating = " 4.8",
-                    RatingDetail = " (121 raitings)",
                     HomeSelected = "CompleteHeart",
-                    Price = 45
+                    Price = 450
                 },
                 new FoodItem
                 {
                     ProductID = 4,
                     CategoryID = 1,
+                    PlaceID=2,
                     ImageUrl = "MainBurger",
                     Name = "Burger and Pizza Hub 4",
                     Description = "Burger - Pizza - Breakfast",
-                    Rating = " 4.8",
-                    RatingDetail = " (121 raitings)",
+                    
                     HomeSelected = "EmptyHeart",
-                    Price = 45
+                    Price = 450
                 },
                 new FoodItem
                 {
                     ProductID = 5,
                     CategoryID = 2,
+                    PlaceID=3,
                     ImageUrl = "MainPizza",
                     Name = "Pizza",
                     Description = "Pizza - Breakfast",
-                    Rating = " 4.4",
-                    RatingDetail = " (120 raitings)",
+                    
                     HomeSelected = "CompleteHeart",
-                    Price = 45
+                    Price = 453
                 },
                 new FoodItem
                 {
                     ProductID = 6,
                     CategoryID = 2,
+                    PlaceID=5,
                     ImageUrl = "MainPizza",
                     Name = "Pizza Hub 2",
                     Description = "Pizza Hub 2- Breakfast",
-                    Rating = " 4.8",
-                    RatingDetail = " (156 raitings)",
                     HomeSelected = "EmptyHeart",
                     Price = 45
                 },
@@ -95,25 +91,23 @@ namespace FoodOrderApp.Helpers
                 {
                     ProductID = 7,
                     CategoryID = 3,
+                    PlaceID=1,
                     ImageUrl = "MainDessert",
                     Name = "Ice Creams",
                     Description = "Icecream - Breakfast",
-                    Rating = " 4.4",
-                    RatingDetail = " (120 raitings)",
                     HomeSelected = "CompleteHeart",
-                    Price = 45
+                    Price = 150
                 },
                 new FoodItem
                 {
                     ProductID = 8,
                     CategoryID = 3,
+                    PlaceID=2,
                     ImageUrl = "MainDessert",
                     Name = "Cakes",
                     Description = "Cool Cakes- Breakfast",
-                    Rating = " 4.8",
-                    RatingDetail = " (156 raitings)",
                     HomeSelected = "EmptyHeart",
-                    Price = 45
+                    Price = 850
                 }
              };
         }
@@ -126,6 +120,7 @@ namespace FoodOrderApp.Helpers
                 {
                     await client.Child("FoodItems").PostAsync(new FoodItem()
                     {
+                        PlaceID = item.PlaceID,
                         CategoryID = item.CategoryID,
                         ProductID = item.ProductID,
                         Description = item.Description,
@@ -133,8 +128,7 @@ namespace FoodOrderApp.Helpers
                         ImageUrl = item.ImageUrl,
                         Name = item.Name,
                         Price = item.Price,
-                        Rating = item.Rating,
-                        RatingDetail = item.RatingDetail
+                        
                     });
                 }
             }

@@ -21,11 +21,9 @@
     <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Fonts\" />
     <Folder Include="Converters\" />
     <Folder Include="Behaviors\" />

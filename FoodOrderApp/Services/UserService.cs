@@ -17,7 +17,7 @@ namespace FoodOrderApp.Services
 
         public UserService()
         {
-            client = new FirebaseClient("https://foodorderingapp-f8cdb.firebaseio.com/");
+            client = new FirebaseClient("https://delevery-cb7c7.firebaseio.com/");
         }
 
         public async Task<bool> IsUserExists(string uname)

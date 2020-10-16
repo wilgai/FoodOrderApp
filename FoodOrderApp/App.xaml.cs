@@ -24,11 +24,11 @@ namespace FoodOrderApp
 
             //MainPage = new MainPage();
             //MainPage = new NavigationPage(new LoginView());
-            //MainPage = new NavigationPage(new SettingsPage());
+            //   MainPage = new NavigationPage(new SettingsPage());
             //MainPage = new NavigationPage(new ProductsView());
 
 
-           string uname = Preferences.Get("Username", String.Empty);
+            string uname = Preferences.Get("Username", String.Empty);
             if (String.IsNullOrEmpty(uname))
             {
                 MainPage = new LoginView();

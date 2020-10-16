@@ -24,6 +24,12 @@ namespace FoodOrderApp.Views
             await afd.AddFoodItemAsync();
         }
 
+        async void ButtonPlaces_Clicked(System.Object sender, System.EventArgs e)
+        {
+            var plc = new AddItemPlaceData();
+            await plc.AddItemPlacesAsync();
+        }
+
         void ButtonCart_Clicked(System.Object sender, System.EventArgs e)
         {
             var cct = new CreateCartTable();

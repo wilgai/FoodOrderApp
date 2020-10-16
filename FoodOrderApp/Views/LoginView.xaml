@@ -33,11 +33,11 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0" VerticalOptions="Center">
-                    <Label Text="Burger Queen" FontFamily="CabinSketch"
-                       TextColor="White"
+                    <Label Text="Delevery" FontFamily="CabinSketch"
+                       TextColor="Purple"
                            FontAttributes="Bold" FontSize="60" HorizontalOptions="Center" />
                     <Label Text="Login Form" FontFamily="CabinSketch"
-                       TextColor="White"
+                       TextColor="Purple"
                            FontAttributes="Bold" FontSize="40" HorizontalOptions="Center" />
                 </StackLayout>
 
