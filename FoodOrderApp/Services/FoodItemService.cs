@@ -46,6 +46,16 @@ namespace FoodOrderApp.Services
             return foodItemsByCategory;
         }
 
+        public async Task<ObservableCollection<FoodItem>> GetFoodItemsByPlaceAsync(int placeID)
+        {
+            var foodItemsByPlace = new ObservableCollection<FoodItem>();
+            var items = (await GetFoodItemsAsync()).Where(p => p.PlaceID == placeID).ToList();
+            foreach (var item in items)
+            {
+                foodItemsByPlace.Add(item);
+            }
+            return foodItemsByPlace;
+        }
         public async Task<ObservableCollection<FoodItem>> GetLatestFoodItemsAsync()
         {
             var latestFoodItems = new ObservableCollection<FoodItem>();

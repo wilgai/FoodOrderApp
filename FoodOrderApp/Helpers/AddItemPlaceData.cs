@@ -26,28 +26,28 @@ namespace FoodOrderApp.Helpers
                  Id=1,
                  Name="Burger King",
                  Address="Ave. Venezuela",
-                 ImageFullPath="Burger_King.png",
+                 ImageFullPath="MainBurger.png",
                  Qualifications=GetRandomQualifications(remarks)
                 },
                  new Itemplace(){
                  Id=2,
                  Name="Mcdonald's",
                  Address="Auto pista San Isidro",
-                 ImageFullPath="Mcdonalds.png",
+                 ImageFullPath="MainBurger.png",
                  Qualifications=GetRandomQualifications(remarks)
                 },
                  new Itemplace(){
                  Id=3,
                  Name="KFC",
                  Address="Ave. Sabana Larga",
-                 ImageFullPath="KFC.png",
+                 ImageFullPath="MainBurger.png",
                  Qualifications=GetRandomQualifications(remarks)
                 },
                   new Itemplace(){
                  Id=4,
                  Name="Little Caesars",
                  Address="Ave. Lope de vega",
-                 ImageFullPath="Little_Caesars.png",
+                 ImageFullPath="MainBurger.png",
                  Qualifications=GetRandomQualifications(remarks)
                 },
             };
@@ -84,6 +84,7 @@ namespace FoodOrderApp.Helpers
             {
                 qualifications.Add(new PlaceQualification
                 {
+                    Id= _random.Next(1, 5),
                     Date = DateTime.UtcNow,
                     Remarks = remarks,
                     Score = _random.Next(1, 5),

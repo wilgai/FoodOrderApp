@@ -13,7 +13,7 @@ namespace FoodOrderApp.Services
         FirebaseClient client;
         public CategoryDataService()
         {
-            client = new FirebaseClient("https://foodorderingapp-f8cdb.firebaseio.com/");
+            client = new FirebaseClient("https://delevery-cb7c7.firebaseio.com/");
         }
 
         public async Task<List<Category>> GetCategoriesAsync()

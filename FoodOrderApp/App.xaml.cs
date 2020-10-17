@@ -24,7 +24,7 @@ namespace FoodOrderApp
 
             //MainPage = new MainPage();
             //MainPage = new NavigationPage(new LoginView());
-            //   MainPage = new NavigationPage(new SettingsPage());
+            //MainPage = new NavigationPage(new SettingsPage());
             //MainPage = new NavigationPage(new ProductsView());
 
 
@@ -35,7 +35,7 @@ namespace FoodOrderApp
             }
             else
             {
-                MainPage = new ProductsView();
+                MainPage = new PlacesView();
             }
         }
 
