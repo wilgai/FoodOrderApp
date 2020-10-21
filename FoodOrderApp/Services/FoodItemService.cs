@@ -24,6 +24,7 @@ namespace FoodOrderApp.Services
                  .Select(f => new FoodItem
                  {
                      CategoryID = f.Object.CategoryID,
+                     PlaceID=f.Object.PlaceID,
                      Description = f.Object.Description,
                      HomeSelected = f.Object.HomeSelected,
                      ImageUrl = f.Object.ImageUrl,
@@ -59,7 +60,7 @@ namespace FoodOrderApp.Services
         public async Task<ObservableCollection<FoodItem>> GetLatestFoodItemsAsync()
         {
             var latestFoodItems = new ObservableCollection<FoodItem>();
-            var items = (await GetFoodItemsAsync()).OrderByDescending(f => f.ProductID).Take(3);
+            var items = (await GetFoodItemsAsync()).OrderByDescending(f => f.ProductID).Take(10);
             foreach (var item in items)
             {
                 latestFoodItems.Add(item);

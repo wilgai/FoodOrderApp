@@ -107,9 +107,9 @@
                     <Label Text="New Users :" TextColor="White" FontAttributes="Bold"/>
 
                     <StackLayout Orientation="Horizontal">
-                        <CheckBox x:Name="CheckBoxAgree" VerticalOptions="Center" Color="White"
+                        <CheckBox x:Name="CheckBoxAgree" VerticalOptions="Center" Color="{AppThemeBinding Light={StaticResource LightContextTextColor}, Dark={StaticResource DarkContentTextColor}}"
                                   IsChecked="True"/>
-                        <Label Text="I Agree" TextColor="White" VerticalOptions="Center"
+                        <Label Text="I Agree" TextColor="{AppThemeBinding Light={StaticResource LightContextTextColor}, Dark={StaticResource DarkContentTextColor}}" VerticalOptions="Center"
                                    FontAttributes="Bold"/>
                     </StackLayout>
 

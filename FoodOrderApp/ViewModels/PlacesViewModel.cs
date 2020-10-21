@@ -2,18 +2,17 @@
 using FoodOrderApp.Services;
 using FoodOrderApp.Views;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace FoodOrderApp.ViewModels
 {
-    public class PlacesViewModel: BaseViewModel
+    public class PlacesViewModel : BaseViewModel
     {
         private string _UserName;
+
         public string UserName
         {
             set
@@ -27,9 +26,15 @@ namespace FoodOrderApp.ViewModels
                 return _UserName;
             }
         }
-
         public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<Itemplace> LatestItems { get; set; }
+
+        public Category SelectedCategory { get; set; }
+
+
+
+
+
 
         public Command LogoutCommand { get; set; }
         public Command ViewOrdersHistoryCommand { get; set; }
@@ -47,6 +52,9 @@ namespace FoodOrderApp.ViewModels
             ViewOrdersHistoryCommand = new Command(async () => await ViewOrderHistoryAsync());
             Categories = new ObservableCollection<Category>();
             LatestItems = new ObservableCollection<Itemplace>();
+            
+
+
             GetCategories();
             GetLatestItems();
         }
@@ -56,7 +64,7 @@ namespace FoodOrderApp.ViewModels
             await Application.Current.MainPage.Navigation.PushModalAsync(new OrdersHistoryView());
         }
 
-        
+
 
         private async Task LogoutAsync()
         {
@@ -82,5 +90,9 @@ namespace FoodOrderApp.ViewModels
                 LatestItems.Add(item);
             }
         }
+
+
+
+
     }
 }

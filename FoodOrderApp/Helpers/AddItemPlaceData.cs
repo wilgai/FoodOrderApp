@@ -27,6 +27,7 @@ namespace FoodOrderApp.Helpers
                  Name="Burger King",
                  Address="Ave. Venezuela",
                  ImageFullPath="MainBurger.png",
+                 CategoryID = 1,
                  Qualifications=GetRandomQualifications(remarks)
                 },
                  new Itemplace(){
@@ -34,6 +35,7 @@ namespace FoodOrderApp.Helpers
                  Name="Mcdonald's",
                  Address="Auto pista San Isidro",
                  ImageFullPath="MainBurger.png",
+                 CategoryID = 3,
                  Qualifications=GetRandomQualifications(remarks)
                 },
                  new Itemplace(){
@@ -41,6 +43,7 @@ namespace FoodOrderApp.Helpers
                  Name="KFC",
                  Address="Ave. Sabana Larga",
                  ImageFullPath="MainBurger.png",
+                 CategoryID = 4,
                  Qualifications=GetRandomQualifications(remarks)
                 },
                   new Itemplace(){
@@ -48,6 +51,7 @@ namespace FoodOrderApp.Helpers
                  Name="Little Caesars",
                  Address="Ave. Lope de vega",
                  ImageFullPath="MainBurger.png",
+                 CategoryID = 2,
                  Qualifications=GetRandomQualifications(remarks)
                 },
             };
@@ -66,6 +70,7 @@ namespace FoodOrderApp.Helpers
                         Name = itemplace.Name,
                         Address = itemplace.Address,
                         ImageFullPath = itemplace.ImageFullPath,
+                        CategoryID=itemplace.CategoryID,
                         Qualifications = itemplace.Qualifications
                     });
                 }

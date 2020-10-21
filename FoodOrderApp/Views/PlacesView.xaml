@@ -66,6 +66,7 @@
                              Source="{FontImage FontFamily=FontAwesome,
                     Glyph={x:Static helpers:IconFont.ViewList}, Size=40, Color=#0AE596}"
                              Margin="0,0,0,0" HorizontalOptions="End"
+                             BackgroundColor="Transparent"
                              Command="{Binding ViewOrdersHistoryCommand}"/>
 
                 <Label Text="{Binding UserCartItemsCount}" FontSize="Subtitle"
@@ -77,12 +78,14 @@
                              Source="{FontImage FontFamily=FontAwesome,
                     Glyph={x:Static helpers:IconFont.Shopping}, Size=40, Color=#E84275}"
                              Margin="0,0,0,0" HorizontalOptions="End"
+                              BackgroundColor="Transparent"
                              Command="{Binding ViewCartCommand}" />
 
                 <ImageButton Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"
                              Source="{FontImage FontFamily=FontAwesome,
                     Glyph={x:Static helpers:IconFont.Logout}, Size=40, Color=IndianRed}"
                              Margin="0,0,0,0" HorizontalOptions="End"
+                              BackgroundColor="Transparent"
                              Command="{Binding LogoutCommand}" />
 
             </Grid>
@@ -112,7 +115,8 @@
                             HeightRequest="95" VerticalOptions="FillAndExpand"
                             HorizontalScrollBarVisibility="Never"
                             ItemsLayout="HorizontalList"
-                            
+                            SelectionChanged="CollectionView_SelectionChanged_1"
+                            SelectedItem="SelectedCategory"
                             SelectionMode="Single"
                             Grid.Row="2">
                 <CollectionView.ItemTemplate>
@@ -160,8 +164,8 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <pancake:PancakeView Grid.Row="0" CornerRadius="20" Margin="0,0,10,0">
-                                    <Image Source="{Binding ImageFullPath}" HeightRequest="140" Aspect="Fill"
+                                <pancake:PancakeView Grid.Row="0" CornerRadius="20" Margin="0,0,0,0">
+                                    <Image Source="{Binding ImageFullPath}" HeightRequest="130" Aspect="Fill"
                                           />
                                 </pancake:PancakeView>
                                 <Label Text="{Binding Name}" FontSize="Medium"
@@ -183,9 +187,9 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <Label Text="4.2km" Grid.Column="0" HorizontalOptions="Center" Grid.Row="1" FontSize="15"  TextColor="White" />
-                                
-                                <Label Text="20-30 min" Grid.Column="0" HorizontalOptions="End" Grid.Row="1" FontSize="15"  TextColor="White" />
+                                <Label Text="4.2km"  Margin="0,0,20,0" Grid.Column="0" HorizontalOptions="Center" Grid.Row="1" FontSize="15" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LightContextTextColor},  Dark={StaticResource DarkContentTextColor}}" />
+                                <Label Text="20-30min" Margin="0,0,20,0" Grid.Column="0" HorizontalOptions="End" Grid.Row="1" FontSize="15"/>
                             </Grid>
                         </StackLayout>
                     </DataTemplate>

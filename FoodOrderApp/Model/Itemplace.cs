@@ -16,7 +16,9 @@ namespace FoodOrderApp.Model
         [MaxLength(100)]
         [Required]
         public string Address { get; set; }
-        
+
+        public int CategoryID { get; set; }
+
         [Display(Name = "Image")]
         public string ImageFullPath { get; set; }
         public ICollection<PlaceQualification> Qualifications { get; set; }

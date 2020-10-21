@@ -104,5 +104,12 @@
            <Setter Property="FontAttributes" Value="Bold" />
         </Style>
 
+      
+        <Style x:Key="SelectedTabLabel" TargetType="Label">
+           
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="{StaticResource LightFooterTextColor}" />
+        </Style>
+
     </Application.Resources>
 </Application>

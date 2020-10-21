@@ -1,13 +1,10 @@
 ﻿using FoodOrderApp.Model;
 using FoodOrderApp.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace FoodOrderApp.ViewModels
 {
-    public class PlaceViewPageViewModel:BaseViewModel
+    public class PlaceViewPageViewModel : BaseViewModel
     {
         private Itemplace _SelectedItemplace;
         public Itemplace SelectedItemplace

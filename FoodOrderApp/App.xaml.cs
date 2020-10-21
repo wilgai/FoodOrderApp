@@ -26,6 +26,8 @@ namespace FoodOrderApp
             //MainPage = new NavigationPage(new LoginView());
             //MainPage = new NavigationPage(new SettingsPage());
             //MainPage = new NavigationPage(new ProductsView());
+            //MainPage = new NavigationPage(new TabbedPage1());
+
 
 
             string uname = Preferences.Get("Username", String.Empty);

@@ -24,7 +24,7 @@
                 Grid.Row="0" HorizontalOptions="Start" Aspect="AspectFit"
                 VerticalOptions="Start" Margin="10,30" Clicked="ImageButton_Clicked"  />
 
-            <Label Text="Burger Queen" FontSize="40" TextColor="WhiteSmoke"
+            <Label Text="Delevery" FontSize="40" TextColor="WhiteSmoke"
                    FontFamily="CabinSketch" HorizontalOptions="Center" VerticalOptions="Start" />
 
             <Label x:Name="LabelName" FontSize="Subtitle" Margin="20,0" TextColor="WhiteSmoke"

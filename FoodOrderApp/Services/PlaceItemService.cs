@@ -25,10 +25,11 @@ namespace FoodOrderApp.Services
                  .OnceAsync<Itemplace>())
                  .Select(f => new Itemplace
                  {
-                     
+                     Id=f.Object.Id,
                      Name = f.Object.Name,
                      Address=f.Object.Address,
                      ImageFullPath=f.Object.ImageFullPath,
+                     CategoryID=f.Object.CategoryID
                      //Qualifications=f.Object.Qualifications
                     
 
@@ -39,12 +40,24 @@ namespace FoodOrderApp.Services
         public async Task<ObservableCollection<Itemplace>> GetLatestPlaceItemsAsync()
         {
             var latestPlaceItems = new ObservableCollection<Itemplace>();
-            var items = (await GetPlaceItemsAsync()).OrderByDescending(f => f.Id).Take(5);
+            var items = (await GetPlaceItemsAsync()).OrderByDescending(f => f.Id).Take(10);
             foreach (var item in items)
             {
                 latestPlaceItems.Add(item);
             }
             return latestPlaceItems;
+        }
+
+
+        public async Task<ObservableCollection<Itemplace>> GetFoodItemsByCategoryAsync(int categoryID)
+        {
+            var foodItemsByPlace = new ObservableCollection<Itemplace>();
+            var items = (await GetPlaceItemsAsync()).Where(p => p.CategoryID == categoryID).ToList();
+            foreach (var item in items)
+            {
+                foodItemsByPlace.Add(item);
+            }
+            return foodItemsByPlace;
         }
     }
 }
