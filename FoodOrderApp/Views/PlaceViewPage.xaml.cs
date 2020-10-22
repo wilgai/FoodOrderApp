@@ -2,8 +2,6 @@
 using FoodOrderApp.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -19,24 +17,24 @@ namespace FoodOrderApp.Views
         int selectionIndex = 0;
         List<Label> tabHeaders = new List<Label>();
         List<VisualElement> tabContents = new List<VisualElement>();
+        private string _group;
         public PlaceViewPage(Itemplace itemplace)
         {
             cvm = new PlaceViewPageViewModel(itemplace);
             InitializeComponent();
             this.BindingContext = cvm;
-            tabHeaders.Add(All);
-            tabHeaders.Add(Combo);
-            tabHeaders.Add(Drinks);
-            tabHeaders.Add(Kids);
-            tabHeaders.Add(Special);
 
-            tabContents.Add(AllContent);
-            tabContents.Add(ComboContent);
-            tabContents.Add(DrinksContent);
-            tabContents.Add(KidsContent);
-            tabContents.Add(SpecialContent);
+            tabHeaders.Add(Tab1);
+            tabHeaders.Add(Tab2);
+            tabHeaders.Add(Tab3);
+            tabHeaders.Add(Tab4);
+            tabHeaders.Add(Tab5);
 
-
+            tabContents.Add(All);
+            tabContents.Add(Combo);
+            tabContents.Add(Drinks);
+            tabContents.Add(Kids);
+            tabContents.Add(Special);
         }
 
 
@@ -45,19 +43,20 @@ namespace FoodOrderApp.Views
             await Navigation.PopModalAsync();
         }
 
-        async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
-        {
-            var selectedPlace = e.CurrentSelection.FirstOrDefault() as Itemplace;
-            if (selectedPlace == null)
-                return;
-            await Navigation.PushModalAsync(new PlaceViewPage(selectedPlace));
-            ((CollectionView)sender).SelectedItem = null;
-        }
+        //async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        //{
+        //    var selectedPlace = e.CurrentSelection.FirstOrDefault() as Itemplace;
+        //    if (selectedPlace == null)
+        //        return;
+        //    await Navigation.PushModalAsync(new PlaceViewPage(selectedPlace));
+        //    ((CollectionView)sender).SelectedItem = null;
+        //}
 
         private async Task ShowSelection(int newTab)
         {
-            if (newTab == selectionIndex) return;
 
+            //Getting the text of the selected tab
+            //_group = tabHeaders[newTab].Text;
             // navigate the selection pill
             var selectdTabLabel = tabHeaders[newTab];
             _ = SelectionUnderline.TranslateTo(selectdTabLabel.Bounds.X, 0, 150, easing: Easing.SinInOut);

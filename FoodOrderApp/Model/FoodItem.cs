@@ -10,6 +10,7 @@ namespace FoodOrderApp.Model
         public string HomeSelected { get; set; }
         public decimal Price { get; set; }
         public int CategoryID { get; set; }
+        public string Group { get; set; }
         public int PlaceID { get; set; }
 
     }

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Firebase.Database;
 using FoodOrderApp.Model;
 using System.Linq;
-using Firebase.Database.Query;
 using System.Collections.ObjectModel;
 
 namespace FoodOrderApp.Services
@@ -30,6 +29,7 @@ namespace FoodOrderApp.Services
                      ImageUrl = f.Object.ImageUrl,
                      Name = f.Object.Name,
                      Price=f.Object.Price,
+                     Group=f.Object.Group,
                      ProductID = f.Object.ProductID,
                      
                  }).ToList();
@@ -78,5 +78,48 @@ namespace FoodOrderApp.Services
             }
             return foodItemsByQuery;
         }
+
+       
+        public async Task<ObservableCollection<FoodItem>> GetFoodItemsByGroupComboAsync(int Id,string group)
+        {
+            var foodItemsByGroup = new ObservableCollection<FoodItem>();
+            var items = (await GetFoodItemsAsync()).Where(p => p.Group == group && p.PlaceID == Id).ToList();
+            foreach (var item in items)
+            {
+                foodItemsByGroup.Add(item);
+            }
+            return foodItemsByGroup;
+        }
+        public async Task<ObservableCollection<FoodItem>> GetFoodItemsByGroupKidsAsync(int Id, string group)
+        {
+            var foodItemsByGroup = new ObservableCollection<FoodItem>();
+            var items = (await GetFoodItemsAsync()).Where(p => p.Group == group && p.PlaceID == Id).ToList();
+            foreach (var item in items)
+            {
+                foodItemsByGroup.Add(item);
+            }
+            return foodItemsByGroup;
+        }
+        public async Task<ObservableCollection<FoodItem>> GetFoodItemsByGroupDrinksAsync(int Id, string group)
+        {
+            var foodItemsByGroup = new ObservableCollection<FoodItem>();
+            var items = (await GetFoodItemsAsync()).Where(p => p.Group == group && p.PlaceID == Id).ToList();
+            foreach (var item in items)
+            {
+                foodItemsByGroup.Add(item);
+            }
+            return foodItemsByGroup;
+        }
+        public async Task<ObservableCollection<FoodItem>> GetFoodItemsByGroupSpecialAsync(int Id, string group)
+        {
+            var foodItemsByGroup = new ObservableCollection<FoodItem>();
+            var items = (await GetFoodItemsAsync()).Where(p => p.Group == group && p.PlaceID == Id    ).ToList();
+            foreach (var item in items)
+            {
+                foodItemsByGroup.Add(item);
+            }
+            return foodItemsByGroup;
+        }
+
     }
 }

@@ -26,6 +26,7 @@ namespace FoodOrderApp.Views
 
         async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
+           
             var itemplace = e.CurrentSelection.FirstOrDefault() as Itemplace;
             if (itemplace == null)
                 return;

@@ -28,6 +28,7 @@ namespace FoodOrderApp.Helpers
                     Name = "Burger and Pizza Hub 1",
                     Description = "Burger - Pizza - Breakfast",
                     HomeSelected = "CompleteHeart",
+                    Group="Combo",
                     Price = 100
                 },
                 new FoodItem
@@ -39,6 +40,7 @@ namespace FoodOrderApp.Helpers
                     Name = "Burger and Pizza Hub 2",
                     Description = "Burger - Pizza - Breakfast",
                     HomeSelected = "EmptyHeart",
+                    Group="Special",
                     Price = 350
                 },
                 new FoodItem
@@ -50,6 +52,7 @@ namespace FoodOrderApp.Helpers
                     Name = "Burger and Pizza Hub 3",
                     Description = "Burger - Pizza - Breakfast",
                     HomeSelected = "CompleteHeart",
+                    Group="Kids",
                     Price = 450
                 },
                 new FoodItem
@@ -62,6 +65,7 @@ namespace FoodOrderApp.Helpers
                     Description = "Burger - Pizza - Breakfast",
                     
                     HomeSelected = "EmptyHeart",
+                    Group="Drinks",
                     Price = 450
                 },
                 new FoodItem
@@ -74,6 +78,7 @@ namespace FoodOrderApp.Helpers
                     Description = "Pizza - Breakfast",
                     
                     HomeSelected = "CompleteHeart",
+                    Group="Combo",
                     Price = 453
                 },
                 new FoodItem
@@ -85,6 +90,7 @@ namespace FoodOrderApp.Helpers
                     Name = "Pizza Hub 2",
                     Description = "Pizza Hub 2- Breakfast",
                     HomeSelected = "EmptyHeart",
+                    Group="Kids",
                     Price = 45
                 },
                 new FoodItem
@@ -96,6 +102,7 @@ namespace FoodOrderApp.Helpers
                     Name = "Ice Creams",
                     Description = "Icecream - Breakfast",
                     HomeSelected = "CompleteHeart",
+                    Group="Drinks",
                     Price = 150
                 },
                 new FoodItem
@@ -107,6 +114,7 @@ namespace FoodOrderApp.Helpers
                     Name = "Cakes",
                     Description = "Cool Cakes- Breakfast",
                     HomeSelected = "EmptyHeart",
+                    Group="Special",
                     Price = 850
                 }
              };
@@ -128,6 +136,7 @@ namespace FoodOrderApp.Helpers
                         ImageUrl = item.ImageUrl,
                         Name = item.Name,
                         Price = item.Price,
+                        Group= item.Group
                         
                     });
                 }

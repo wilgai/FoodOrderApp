@@ -41,7 +41,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="0">
@@ -98,6 +98,7 @@
 
                 <SearchBar Grid.Column="0" Placeholder="What are you looking for?"
                            Text="{Binding SearchText}"
+                           SearchCommand="{Binding SearchCommand}"
                            PlaceholderColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                            BackgroundColor="Transparent" HorizontalOptions="Fill" />

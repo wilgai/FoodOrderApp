@@ -12,7 +12,7 @@ namespace FoodOrderApp.ViewModels
     public class PlacesViewModel : BaseViewModel
     {
         private string _UserName;
-
+        private Command _searchCommand;
         public string UserName
         {
             set
@@ -20,28 +20,33 @@ namespace FoodOrderApp.ViewModels
                 _UserName = value;
                 OnPropertyChanged();
             }
-
             get
             {
                 return _UserName;
             }
         }
+        public Command SearchCommand => _searchCommand ?? (_searchCommand = new Command(GetLatestItems));
+        private string _SearchText;
+        public string SearchText
+        {
+            set
+            {
+                _SearchText = value;
+                GetLatestItems();
+            }
+
+            get
+            {
+                return _SearchText;
+            }
+        }
         public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<Itemplace> LatestItems { get; set; }
-
         public Category SelectedCategory { get; set; }
-
-
-
-
-
-
         public Command LogoutCommand { get; set; }
         public Command ViewOrdersHistoryCommand { get; set; }
-
         public PlacesViewModel()
         {
-
             var uname = Preferences.Get("Username", String.Empty);
             if (String.IsNullOrEmpty(uname))
                 UserName = "Guest";
@@ -52,25 +57,17 @@ namespace FoodOrderApp.ViewModels
             ViewOrdersHistoryCommand = new Command(async () => await ViewOrderHistoryAsync());
             Categories = new ObservableCollection<Category>();
             LatestItems = new ObservableCollection<Itemplace>();
-            
-
-
             GetCategories();
             GetLatestItems();
         }
-
         private async Task ViewOrderHistoryAsync()
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new OrdersHistoryView());
         }
-
-
-
         private async Task LogoutAsync()
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new LogoutView());
         }
-
         private async void GetCategories()
         {
             var data = await new CategoryDataService().GetCategoriesAsync();
@@ -80,19 +77,26 @@ namespace FoodOrderApp.ViewModels
                 Categories.Add(item);
             }
         }
-
         private async void GetLatestItems()
         {
-            var data = await new PlaceItemService().GetLatestPlaceItemsAsync();
-            LatestItems.Clear();
-            foreach (var item in data)
+            if (string.IsNullOrEmpty(SearchText))
             {
-                LatestItems.Add(item);
+                var data = await new PlaceItemService().GetLatestPlaceItemsAsync();
+                LatestItems.Clear();
+                foreach (var item in data)
+                {
+                    LatestItems.Add(item);
+                }
+            }
+            else
+            {
+                var data = await new PlaceItemService().GetPlaceItemsByQueryAsync(SearchText);
+                LatestItems.Clear();
+                foreach (var item in data)
+                {
+                    LatestItems.Add(item);
+                }  
             }
         }
-
-
-
-
     }
 }

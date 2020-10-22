@@ -59,5 +59,16 @@ namespace FoodOrderApp.Services
             }
             return foodItemsByPlace;
         }
+
+        public async Task<ObservableCollection<Itemplace>> GetPlaceItemsByQueryAsync(string searchText)
+        {
+            var placeItemsByQuery = new ObservableCollection<Itemplace>();
+            var items = (await GetPlaceItemsAsync()).Where(p => p.Name.ToLower().Contains(searchText.ToLower())).ToList();
+            foreach (var item in items)
+            {
+                placeItemsByQuery.Add(item);
+            }
+            return placeItemsByQuery;
+        }
     }
 }

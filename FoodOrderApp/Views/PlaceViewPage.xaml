@@ -35,7 +35,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
-                        
                     </Grid.RowDefinitions>
 
 
@@ -51,27 +50,27 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="0" Style="{StaticResource SelectedTabLabel}" Text="All" x:Name="All">
+                        <Label Grid.Column="0" Style="{StaticResource SelectedTabLabel}" Text="All" x:Name="Tab1">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Grid.Column="1" Text="Combo" x:Name="Combo">
+                        <Label Grid.Column="1" Text="Combo" x:Name="Tab2">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Grid.Column="2" Text="Drinks"  x:Name="Drinks">
+                        <Label Grid.Column="2" Text="Drinks"  x:Name="Tab3">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Grid.Column="3" Text="Kids" x:Name="Kids">
+                        <Label Grid.Column="3" Text="Kids" x:Name="Tab4">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Grid.Column="4" Text="Special" x:Name="Special">
+                        <Label Grid.Column="4" Text="Special" x:Name="Tab5">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Label.GestureRecognizers>
@@ -88,41 +87,217 @@
                             Color="#E84275" />
 
                     </Grid>
+                    <CollectionView ItemsSource="{Binding FoodItemByGroupSpecial}"
+                                    VerticalOptions="Start"
+                                    VerticalScrollBarVisibility="Never"
+                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                    SelectionMode="Single"
+                                    x:Name="Special"
+                                    >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="False" BackgroundColor="{DynamicResource DefaultPrimaryColor}" HeightRequest="90"
+                                           CornerRadius="20" Margin="0,1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
 
 
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="40" />
+                                            </Grid.RowDefinitions>
+                                            <pancake:PancakeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                                                 CornerRadius="12" Margin="0,0,10,0">
+                                                <Image Source="{Binding ImageUrl}" HeightRequest="90"
+                                                       WidthRequest="90" Aspect="AspectFill" />
+                                            </pancake:PancakeView>
 
-                    <Views:Combo
-                        x:Name="ComboContent"
-                        IsVisible="false"
-                        Grid.Row="1" Grid.Column="0"
-                        
-                        />
-                    <Views:Drinks
-                        x:Name="DrinksContent"
-                        IsVisible="false"
-                        Grid.Row="1" Grid.Column="0"
-                        
-                        />
-                    <Views:Kids
-                        x:Name="KidsContent"
-                        IsVisible="false"
-                        Grid.Row="1" Grid.Column="0"
-                        
-                        />
-                    <Views:Special
-                        x:Name="SpecialContent"
-                        IsVisible="false"
-                        Grid.Row="1" Grid.Column="0"
-                        
-                        />
+                                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Name}" FontSize="15" FontAttributes="Bold" />
+                                            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Description}
+                                                   "  FontSize="15"
+                                                    />
+
+                                            <Label Grid.Row="2" Grid.Column="1" Margin="0,0,0,0" FontSize="15"
+                                                   VerticalOptions="Center" FontAttributes="Bold" Text="{Binding Price, StringFormat='{0:c}'}"/>
+
+
+                                            <Image Grid.Row="0" Grid.Column="2" Source="{Binding HomeSelected}"
+                                                   HeightRequest="15" />
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+
+                    <CollectionView ItemsSource="{Binding FoodItemByGroupKids}"
+                                    VerticalOptions="Start"
+                                    VerticalScrollBarVisibility="Never"
+                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                    SelectionMode="Single"
+                                     x:Name="Kids"
+                                    >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="False" BackgroundColor="{DynamicResource DefaultPrimaryColor}" HeightRequest="90"
+                                           CornerRadius="20" Margin="0,1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+
+
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="40" />
+                                            </Grid.RowDefinitions>
+                                            <pancake:PancakeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                                                 CornerRadius="12" Margin="0,0,10,0">
+                                                <Image Source="{Binding ImageUrl}" HeightRequest="90"
+                                                       WidthRequest="90" Aspect="AspectFill" />
+                                            </pancake:PancakeView>
+
+                                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Name}" FontSize="15" FontAttributes="Bold" />
+                                            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Description}
+                                                   "  FontSize="15"
+                                                    />
+
+                                            <Label Grid.Row="2" Grid.Column="1" Margin="0,0,0,0" FontSize="15"
+                                                   VerticalOptions="Center" FontAttributes="Bold" Text="{Binding Price, StringFormat='{0:c}'}"/>
+
+
+                                            <Image Grid.Row="0" Grid.Column="2" Source="{Binding HomeSelected}"
+                                                   HeightRequest="15" />
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <CollectionView ItemsSource="{Binding FoodItemByGroupDrinks}"
+                                    VerticalOptions="Start"
+                                    VerticalScrollBarVisibility="Never"
+                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                    SelectionMode="Single"
+                                     x:Name="Drinks"
+                                    >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame HasShadow="False" BackgroundColor="{DynamicResource DefaultPrimaryColor}" HeightRequest="90"
+                                           CornerRadius="20" Margin="0,1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+
+
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="40" />
+                                            </Grid.RowDefinitions>
+                                            <pancake:PancakeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                                                 CornerRadius="12" Margin="0,0,10,0">
+                                                <Image Source="{Binding ImageUrl}" HeightRequest="90"
+                                                       WidthRequest="90" Aspect="AspectFill" />
+                                            </pancake:PancakeView>
+
+                                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Name}" FontSize="15" FontAttributes="Bold" />
+                                            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Description}
+                                                   "  FontSize="15"
+                                                    />
+
+                                            <Label Grid.Row="2" Grid.Column="1" Margin="0,0,0,0" FontSize="15"
+                                                   VerticalOptions="Center" FontAttributes="Bold" Text="{Binding Price, StringFormat='{0:c}'}"/>
+
+
+                                            <Image Grid.Row="0" Grid.Column="2" Source="{Binding HomeSelected}"
+                                                   HeightRequest="15" />
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <CollectionView ItemsSource="{Binding FoodItemByGroupCombo}"
+                                    VerticalOptions="Start"
+                                    VerticalScrollBarVisibility="Never"
+                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                    SelectionMode="Single"
+                                    x:Name="Combo"
+                                    >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame HasShadow="False" BackgroundColor="{DynamicResource DefaultPrimaryColor}" HeightRequest="90"
+                                           CornerRadius="20" Margin="0,1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <pancake:PancakeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                                                 CornerRadius="12" Margin="0,0,10,0">
+                                        <Image Source="{Binding ImageUrl}" HeightRequest="90"
+                                                       WidthRequest="90" Aspect="AspectFill" />
+                                    </pancake:PancakeView>
+
+                                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Name}" FontSize="15" FontAttributes="Bold" />
+                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                                                   Text="{Binding Description}
+                                                   "  FontSize="15"
+                                                    />
+
+                                    <Label Grid.Row="2" Grid.Column="1" Margin="0,0,0,0" FontSize="15"
+                                                   VerticalOptions="Center" FontAttributes="Bold" Text="{Binding Price, StringFormat='{0:c}'}"/>
+
+
+                                    <Image Grid.Row="0" Grid.Column="2" Source="{Binding HomeSelected}"
+                                                   HeightRequest="15" />
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
                     <CollectionView ItemsSource="{Binding FoodItemsByPlace}"
                                     VerticalOptions="Start"
                                     VerticalScrollBarVisibility="Never"
                                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                     SelectionMode="Single"
-                                    SelectionChanged="CollectionView_SelectionChanged"
-                                    x:Name="AllContent"
+                                    
+                                    x:Name="All"
                                     IsVisible="True">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>   
