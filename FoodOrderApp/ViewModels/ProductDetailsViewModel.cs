@@ -43,6 +43,25 @@ namespace FoodOrderApp.ViewModels
             }
         }
 
+        private decimal _SubTotal;
+        public decimal SubTotal
+        {
+            set
+            {
+                this._SubTotal = value;
+                if (this._TotalQuantity < 0)
+                    this._SubTotal = 0;
+                if (this._TotalQuantity == 0)
+                    this._SubTotal = 0;
+                OnPropertyChanged();
+            }
+
+            get
+            {
+                return _SubTotal;
+            }
+        }
+
         public Command IncrementOrderCommand { get; set; }
         public Command DecrementOrderCommand { get; set; }
         public Command AddToCartCommand { get; set; }
@@ -53,7 +72,7 @@ namespace FoodOrderApp.ViewModels
         {
             SelectedFoodItem = foodItem;
             TotalQuantity = 0;
-
+            
             IncrementOrderCommand = new Command(() => IncrementOrder());
             DecrementOrderCommand = new Command(() => DecrementOrder());
             AddToCartCommand = new Command(() => AddToCart());
@@ -110,11 +129,15 @@ namespace FoodOrderApp.ViewModels
         private void DecrementOrder()
         {
             TotalQuantity--;
+            SubTotal -= SelectedFoodItem.Price;
         }
 
         private void IncrementOrder()
         {
             TotalQuantity++;
+
+            SubTotal = SelectedFoodItem.Price * TotalQuantity;
+
         }
     }
 }

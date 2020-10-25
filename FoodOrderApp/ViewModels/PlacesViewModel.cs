@@ -25,6 +25,21 @@ namespace FoodOrderApp.ViewModels
                 return _UserName;
             }
         }
+
+        private int _UserCartItemsCount;
+        public int UserCartItemsCount
+        {
+            set
+            {
+                _UserCartItemsCount = value;
+                OnPropertyChanged();
+            }
+
+            get
+            {
+                return _UserCartItemsCount;
+            }
+        }
         public Command SearchCommand => _searchCommand ?? (_searchCommand = new Command(GetLatestItems));
         private string _SearchText;
         public string SearchText
@@ -45,6 +60,7 @@ namespace FoodOrderApp.ViewModels
         public Category SelectedCategory { get; set; }
         public Command LogoutCommand { get; set; }
         public Command ViewOrdersHistoryCommand { get; set; }
+        public Command ViewCartCommand { get; set; }
         public PlacesViewModel()
         {
             var uname = Preferences.Get("Username", String.Empty);
@@ -52,7 +68,10 @@ namespace FoodOrderApp.ViewModels
                 UserName = "Guest";
             else
                 UserName = uname;
+            CartItemService Cart = new CartItemService();
+            UserCartItemsCount = Cart.GetCartItemsCount();
 
+            ViewCartCommand = new Command(async () => await ViewCartAsync());
             LogoutCommand = new Command(async () => await LogoutAsync());
             ViewOrdersHistoryCommand = new Command(async () => await ViewOrderHistoryAsync());
             Categories = new ObservableCollection<Category>();
@@ -60,6 +79,12 @@ namespace FoodOrderApp.ViewModels
             GetCategories();
             GetLatestItems();
         }
+
+        private async Task ViewCartAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new CartView());
+        }
+
         private async Task ViewOrderHistoryAsync()
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new OrdersHistoryView());

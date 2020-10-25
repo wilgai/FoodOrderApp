@@ -11,6 +11,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Image Grid.Row="0" Source="{Binding SelectedItemplace.ImageFullPath}"
@@ -199,7 +200,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <Frame HasShadow="False" BackgroundColor="{DynamicResource DefaultPrimaryColor}" HeightRequest="90"
+                                    <Frame HasShadow="False" IsVisible="False" BackgroundColor="{DynamicResource DefaultPrimaryColor}" HeightRequest="90"
                                            CornerRadius="20" Margin="0,1">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
@@ -296,7 +297,7 @@
                                     VerticalScrollBarVisibility="Never"
                                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                     SelectionMode="Single"
-                                    
+                                    SelectionChanged="CollectionView_SelectionChanged"
                                     x:Name="All"
                                     IsVisible="True">
                         <CollectionView.ItemTemplate>
@@ -313,9 +314,9 @@
 
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                                <RowDefinition Height="*" />
-                                                <RowDefinition Height="40" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <pancake:PancakeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
                                                                  CornerRadius="12" Margin="0,0,10,0">
@@ -348,7 +349,48 @@
                     
                 </Grid>
                 
+                
             </pancake:PancakeView>
+            <Frame Grid.Row="3" CornerRadius="10" HeightRequest="35" IsVisible="False"  BackgroundColor="{AppThemeBinding Light={StaticResource LightInfoButtonColor}, Dark={StaticResource DarkInfoButtonColor}}"
+                   HorizontalOptions="FillAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <ImageButton Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                             Source="{FontImage FontFamily=FontAwesome,
+                    Glyph={x:Static helpers:IconFont.Shopping}, Size=50, Color=White}"
+                             Margin="0,0,0,0" HorizontalOptions="End"
+                              BackgroundColor="Transparent"
+                             Command="{Binding ViewCartCommand}" />
+
+                    <Label Text="" FontSize="Medium"
+                       Grid.Row="0" Grid.Column="0" 
+                       TextColor="{AppThemeBinding Light={StaticResource LightContextTextColor}, Dark={StaticResource DarkContentTextColor}}"
+                       HorizontalTextAlignment="End" VerticalTextAlignment="Start"  Margin="0,0,-7,0"/>
+
+                    <Label Text="Ver Carrito
+                           
+                           " Margin="35,0,0,0" Grid.Row="0" Grid.Column="1" FontSize="Medium"
+                                           FontAttributes="Bold" HorizontalOptions="End" HeightRequest="25"
+                          TextColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}" />
+
+                    <Label Text="" Margin="0,0,0,0" Grid.Row="0" Grid.Column="2" FontSize="Medium"
+                                           FontAttributes="Bold" HorizontalOptions="End" HeightRequest="25"
+                           TextColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"/>
+
+
+                </Grid>
+
+
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

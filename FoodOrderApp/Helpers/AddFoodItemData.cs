@@ -68,6 +68,18 @@ namespace FoodOrderApp.Helpers
                     Group="Drinks",
                     Price = 450
                 },
+                 new FoodItem
+                {
+                    ProductID = 4,
+                    CategoryID = 1,
+                    PlaceID=1,
+                    ImageUrl = "MainBurger",
+                    Name = "Burger and Pizza Hub 4",
+                    Description = "Burger - Pizza - Breakfast",
+                    HomeSelected = "EmptyHeart",
+                    Group="Drinks",
+                    Price = 450
+                },
                 new FoodItem
                 {
                     ProductID = 5,

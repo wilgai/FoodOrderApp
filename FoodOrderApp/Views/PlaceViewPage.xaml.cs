@@ -2,6 +2,7 @@
 using FoodOrderApp.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -43,14 +44,14 @@ namespace FoodOrderApp.Views
             await Navigation.PopModalAsync();
         }
 
-        //async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
-        //{
-        //    var selectedPlace = e.CurrentSelection.FirstOrDefault() as Itemplace;
-        //    if (selectedPlace == null)
-        //        return;
-        //    await Navigation.PushModalAsync(new PlaceViewPage(selectedPlace));
-        //    ((CollectionView)sender).SelectedItem = null;
-        //}
+        async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+            var selectedProduct = e.CurrentSelection.FirstOrDefault() as FoodItem;
+            if (selectedProduct == null)
+                return;
+            await Navigation.PushModalAsync(new ProductDetailsView(selectedProduct));
+            ((CollectionView)sender).SelectedItem = null;
+        }
 
         private async Task ShowSelection(int newTab)
         {

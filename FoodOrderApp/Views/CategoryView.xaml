@@ -34,8 +34,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding TotalFoodItems,
-                        StringFormat='{0} Total Items'}" FontAttributes="Bold" FontSize="18"
+                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding TotalFoodItems, StringFormat='{0} Total Items'}" FontAttributes="Bold" FontSize="18"
                         TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                         />
                     <ImageButton Grid.Row="0" Grid.Column="1"

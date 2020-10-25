@@ -6,11 +6,9 @@ namespace FoodOrderApp.Services
 {
     public class CartItemService
     {
-        public int GetUserCartCount()
+        public int GetCartItemsCount()
         {
             return 0;
         }
-
-        public void RemoveItemsFromCart() { }
     }
 }

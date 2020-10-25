@@ -46,7 +46,7 @@
 
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"  />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -57,14 +57,14 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Welcome " Grid.Row="0" Grid.Column="0"
-                       Style="{StaticResource PrimaryLabel}" FontSize="20" FontAttributes="Bold"   />
-                
+                       Style="{StaticResource PrimaryLabel}" FontSize="20" FontAttributes="Bold" Margin="0,10,0,0" />
+
                 <Label Text="{Binding UserName}" Grid.Row="0" Grid.Column="1" FontSize="20"
-                       FontAttributes="Bold" Style="{StaticResource PrimaryLabel}" Margin="0,0,40,0"  />
+                       FontAttributes="Bold" Style="{StaticResource PrimaryLabel}" Margin="0,10,40,0"  />
 
                 <ImageButton Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                              Source="{FontImage FontFamily=FontAwesome,
-                    Glyph={x:Static helpers:IconFont.ViewList}, Size=40, Color=#0AE596}"
+                    Glyph={x:Static helpers:IconFont.ViewList}, Size=35, Color=#0AE596}"
                              Margin="0,0,0,0" HorizontalOptions="End"
                              BackgroundColor="Transparent"
                              Command="{Binding ViewOrdersHistoryCommand}"/>
@@ -72,21 +72,22 @@
                 <Label Text="{Binding UserCartItemsCount}" FontSize="Subtitle"
                        Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"
                        TextColor="{DynamicResource SecondaryTextColor}"
-                       HorizontalTextAlignment="End" VerticalTextAlignment="Start" />
+                       HorizontalTextAlignment="End" VerticalTextAlignment="Start"  Margin="0,0,0,30"/>
 
                 <ImageButton Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"
                              Source="{FontImage FontFamily=FontAwesome,
-                    Glyph={x:Static helpers:IconFont.Shopping}, Size=40, Color=#E84275}"
+                    Glyph={x:Static helpers:IconFont.Shopping}, Size=32, Color=#E84275}"
                              Margin="0,0,0,0" HorizontalOptions="End"
                               BackgroundColor="Transparent"
                              Command="{Binding ViewCartCommand}" />
 
                 <ImageButton Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"
                              Source="{FontImage FontFamily=FontAwesome,
-                    Glyph={x:Static helpers:IconFont.Logout}, Size=40, Color=IndianRed}"
+                    Glyph={x:Static helpers:IconFont.Logout}, Size=28, Color=IndianRed}"
                              Margin="0,0,0,0" HorizontalOptions="End"
                               BackgroundColor="Transparent"
                              Command="{Binding LogoutCommand}" />
+
 
             </Grid>
 
@@ -103,6 +104,7 @@
                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"
                            BackgroundColor="Transparent" HorizontalOptions="Fill" />
             </Grid>
+            
             <!--<Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -111,6 +113,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>-->
                 <!--<ScrollView>-->
+            <ScrollView Grid.Row="2">
+            <StackLayout >
+               
             <CollectionView ItemsSource="{Binding Categories}"
                             Margin="0,0"
                             HeightRequest="95" VerticalOptions="FillAndExpand"
@@ -196,7 +201,10 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-    <!--</ScrollView>-->
+                
+            </StackLayout>
+            </ScrollView>
+            <!--</ScrollView>-->
             <!--</Grid>-->
         </Grid>
     </ContentPage.Content>
