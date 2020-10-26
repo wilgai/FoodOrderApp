@@ -1,4 +1,5 @@
-﻿using Firebase.Database;
+﻿using Common.Web.Entities;
+using Firebase.Database;
 using FoodOrderApp.Model;
 using System;
 using System.Collections.Generic;

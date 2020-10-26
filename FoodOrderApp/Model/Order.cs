@@ -1,5 +1,5 @@
 ﻿using System;
-namespace FoodOrderApp.Model
+namespace Common.Web.Entities
 {
     public class Order
     {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Web.Entities;
 using Firebase.Database;
 using Firebase.Database.Query;
 using FoodOrderApp.Model;

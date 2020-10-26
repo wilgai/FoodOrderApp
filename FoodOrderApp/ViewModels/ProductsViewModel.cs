@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Common.Web.Entities;
 using FoodOrderApp.Model;
 using FoodOrderApp.Services;
 using FoodOrderApp.Views;

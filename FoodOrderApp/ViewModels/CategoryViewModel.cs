@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using Common.Web.Entities;
 using FoodOrderApp.Model;
 using FoodOrderApp.Services;
 

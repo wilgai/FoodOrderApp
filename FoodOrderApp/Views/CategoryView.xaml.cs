@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Common.Web.Entities;
 using FoodOrderApp.Model;
 using FoodOrderApp.ViewModels;
 using Xamarin.Forms;

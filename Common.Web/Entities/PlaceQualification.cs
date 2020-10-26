@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
-namespace FoodOrderApp.Model
+namespace Common.Web.Entities
 {
     public class PlaceQualification
     {
@@ -19,8 +17,6 @@ namespace FoodOrderApp.Model
 
         [JsonIgnore]
         public Itemplace Restaurant { get; set; }
-
-        public User User { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public float Score { get; set; }

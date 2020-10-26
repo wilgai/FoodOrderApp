@@ -5,6 +5,7 @@ using Firebase.Database;
 using FoodOrderApp.Model;
 using System.Linq;
 using Firebase.Database.Query;
+using Common.Web.Entities;
 
 namespace FoodOrderApp.Services
 {

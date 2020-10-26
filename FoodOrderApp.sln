@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodOrderApp", "FoodOrderAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrderApp.Web", "FoodOrderApp.Web\FoodOrderApp.Web.csproj", "{95A7BD80-966E-4875-897A-7049A4CC2E96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Web", "Common.Web\Common.Web.csproj", "{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{95A7BD80-966E-4875-897A-7049A4CC2E96}.Release|iPhone.Build.0 = Release|Any CPU
 		{95A7BD80-966E-4875-897A-7049A4CC2E96}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{95A7BD80-966E-4875-897A-7049A4CC2E96}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Release|iPhone.Build.0 = Release|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{DDB673C4-E823-4803-B8DA-B5CA409CDA3B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

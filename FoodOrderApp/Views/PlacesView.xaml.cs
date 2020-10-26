@@ -1,4 +1,5 @@
-﻿using FoodOrderApp.Model;
+﻿using Common.Web.Entities;
+using FoodOrderApp.Model;
 using FoodOrderApp.ViewModels;
 using System;
 using System.Collections.Generic;
