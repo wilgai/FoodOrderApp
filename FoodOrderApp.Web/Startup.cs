@@ -1,4 +1,7 @@
-﻿using FoodOrderApp.Web.Helpers;
+﻿using FireSharp.Interfaces;
+using FoodOrderApp.Web.Data;
+using FoodOrderApp.Web.Helpers;
+using FoodOrderApp.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +33,12 @@ namespace FoodOrderApp.Web
 
             services.AddScoped<ICategoryConverterHelper, CategoryConverterHelper>();
             services.AddScoped<IBlobHelper, BlobHelper>();
+            services.AddScoped<IItemplaceConverter, ItemplaceConverter>();
+            services.AddScoped<ICategoryCombos, CategoryCombos>();
+            services.AddScoped<ItemPlaceDataService>();
+            services.AddScoped<CategoryDataService>();
+            services.AddScoped<Datacontext>();
+           
 
 
 

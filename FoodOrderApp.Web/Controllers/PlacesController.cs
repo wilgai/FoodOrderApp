@@ -1,4 +1,8 @@
-﻿using Common.Web.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Common.Web.Entities;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -9,68 +13,70 @@ using FoodOrderApp.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 
 namespace FoodOrderApp.Web.Controllers
 {
-    public class CategoriesController : Controller
+    public class PlacesController : Controller
     {
-
         private readonly IBlobHelper _blobHelper;
-        private readonly ICategoryConverterHelper _categoryconverterHelper;
-        private readonly CategoryDataService _categoryDataService;
+        private readonly IItemplaceConverter _iItemplaceConverter;
+        private readonly ICategoryCombos _categorycombos;
+        private readonly ItemPlaceDataService _itemPlaceDataService;
         private readonly Datacontext _context;
         private string imageUrl;
+
         IFirebaseClient client;
-        public CategoriesController(IBlobHelper blobHelper, ICategoryConverterHelper categoryconverterHelper, CategoryDataService categoryDataService, Datacontext context)
+        public PlacesController(IBlobHelper blobHelper, IItemplaceConverter iItemplaceConverter, ICategoryCombos categorycombos, ItemPlaceDataService itemPlaceDataService, Datacontext context)
         {
             _blobHelper = blobHelper;
-            _categoryconverterHelper = categoryconverterHelper;
-            _categoryDataService = categoryDataService;
+            _iItemplaceConverter = iItemplaceConverter;
+            _categorycombos = categorycombos;
+            _itemPlaceDataService = itemPlaceDataService;
             _context = context;
         }
+       
+
         public IActionResult Index()
         {
             client = new FireSharp.FirebaseClient(_context.GetFirebaseConnection());
-            FirebaseResponse response = client.Get("Categories");
+            FirebaseResponse response = client.Get("Itemplaces");
             dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
-            var list = new List<Category>();
+            var list = new List<Itemplace>();
             foreach (var item in data)
             {
-                list.Add(JsonConvert.DeserializeObject<Category>(((JProperty)item).Value.ToString()));
+                list.Add(JsonConvert.DeserializeObject<Itemplace>(((JProperty)item).Value.ToString()));
             }
             return View(list);
-
         }
 
         public IActionResult Create()
         {
-            CategoryViewModel model = new CategoryViewModel();
+            ItemplaceViewModel model = new ItemplaceViewModel 
+            {
+                Categories = _categorycombos.GetComboCategories()
+            };
             return View(model);
         }
 
         [HttpPost]
-
-        public async Task<IActionResult> Create(CategoryViewModel model)
+        public async Task<IActionResult> Create(ItemplaceViewModel model)
         {
 
             if (ModelState.IsValid)
             {
-                var checkName = await _categoryDataService.CheckName(model.CategoryName);
-                if (checkName.Count > 0)
+                var  checkName = await _itemPlaceDataService.CheckName(model.Name);
+
+               if (checkName.Count >0)
                 {
                     ModelState.AddModelError(string.Empty, "This name already exist");
                 }
-                else
+               else
                 {
-                    imageUrl = await Task.Run(() => _blobHelper.UploadBlobAsync(model.ImageFile, "localCategories", "categories"));
+                    imageUrl = await Task.Run(() => _blobHelper.UploadBlobAsync(model.ImageFile, "localPlaces", "places"));
                     try
                     {
-                        Category category = _categoryconverterHelper.ToCategory(model, imageUrl);
-                        AddStudentToFirebase(category);
+                        Itemplace itemplace = _iItemplaceConverter.ToItemplace(model, imageUrl);
+                        AddPlaceToFirebase(itemplace);
                         ModelState.AddModelError(string.Empty, "Added Successfully");
                         return RedirectToAction(nameof(Index));
                     }
@@ -80,67 +86,72 @@ namespace FoodOrderApp.Web.Controllers
                         ModelState.AddModelError(string.Empty, exception.Message);
 
                     }
+
                 }
-
-                   
+ 
             }
-
+            model.Categories = _categorycombos.GetComboCategories();
             return View(model);
         }
 
-
-        private void AddStudentToFirebase(Category category)
+        private void AddPlaceToFirebase(Itemplace itemplace)
         {
             client = new FireSharp.FirebaseClient(_context.GetFirebaseConnection());
-            var data = category;
-            PushResponse response = client.Push("Categories/", data);
-            data.CategoryID = response.Result.name;
-            SetResponse setResponse = client.Set("Categories/" + data.CategoryID, data);
+            var data = itemplace;
+            PushResponse response = client.Push("Itemplaces/", data);
+            data.Id = response.Result.name;
+            SetResponse setResponse = client.Set("Itemplaces/" + data.Id, data);
         }
 
+        
         [HttpGet]
+       
         public ActionResult Edit(string id)
         {
+            
+
+
             if (id == null)
             {
                 return NotFound();
             }
             client = new FireSharp.FirebaseClient(_context.GetFirebaseConnection());
-            FirebaseResponse response = client.Get("Categories/" + id);
-            Category category = JsonConvert.DeserializeObject<Category>(response.Body);
-            if (category == null)
+            FirebaseResponse response = client.Get("Itemplaces/" + id);
+            Itemplace itemplace = JsonConvert.DeserializeObject<Itemplace>(response.Body);
+            if (itemplace == null)
             {
                 return NotFound();
             }
-            CategoryViewModel model = _categoryconverterHelper.ToCategoryViewModel(category);
+            ItemplaceViewModel model = _iItemplaceConverter.ToItemplaceViewModel(itemplace);
             return View(model);
 
         }
+
         [HttpPost]
-        
-        public async Task<IActionResult> Edit(CategoryViewModel model)
+        public async Task<IActionResult> Edit(ItemplaceViewModel model)
         {
+
             if (ModelState.IsValid)
             {
+                var checkName = await _itemPlaceDataService.CheckName(model.Name);
 
-                var checkName = await _categoryDataService.CheckName(model.CategoryName);
                 if (checkName.Count > 1)
                 {
                     ModelState.AddModelError(string.Empty, "This name already exist");
                 }
                 else
                 {
-                    string imageUrl = model.ImageUrl;
+                    string imageUrl = model.ImageFullPath;
                     if (model.ImageFile != null)
                     {
-                        imageUrl = await Task.Run(() => _blobHelper.UploadBlobAsync(model.ImageFile, "localCategories", "categories"));
+                        imageUrl = await Task.Run(() => _blobHelper.UploadBlobAsync(model.ImageFile, "localPlaces", "places"));
                     }
 
                     try
                     {
                         client = new FireSharp.FirebaseClient(_context.GetFirebaseConnection());
-                        Category category = _categoryconverterHelper.ToCategory(model, imageUrl);
-                        SetResponse response = client.Set("Categories/" + category.CategoryID, category);
+                        Itemplace itemplace = _iItemplaceConverter.ToItemplace(model, imageUrl);
+                        SetResponse response = client.Set("Itemplaces/" + itemplace.Id, itemplace);
                         ModelState.AddModelError(string.Empty, "Edited Successfully");
                         return RedirectToAction(nameof(Index));
                     }
@@ -148,13 +159,21 @@ namespace FoodOrderApp.Web.Controllers
                     {
                         ModelState.AddModelError(string.Empty, exception.Message);
                     }
+
                 }
-                    
+
             }
-
+            model.Categories = _categorycombos.GetComboCategories();
             return View(model);
+        }
 
-            
+        [HttpGet]
+        public ActionResult Details(string id)
+        {
+            client = new FireSharp.FirebaseClient(_context.GetFirebaseConnection());
+            FirebaseResponse response = client.Get("Itemplaces/" + id);
+            Itemplace data = JsonConvert.DeserializeObject<Itemplace>(response.Body);
+            return View(data);
         }
 
         public ActionResult Delete(string id)
@@ -167,8 +186,8 @@ namespace FoodOrderApp.Web.Controllers
             try
             {
                 client = new FireSharp.FirebaseClient(_context.GetFirebaseConnection());
-                FirebaseResponse response = client.Delete("Categories/" + id);
-              
+                FirebaseResponse response = client.Delete("Itemplaces/" + id);
+
             }
             catch (Exception ex)
             {

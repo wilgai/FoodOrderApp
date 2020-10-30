@@ -47,7 +47,7 @@ namespace FoodOrderApp.ViewModels
             GetFoodItems(category.CategoryID);
         }
 
-        private async void GetFoodItems(int categoryID)
+        private async void GetFoodItems(string categoryID)
         {
             var data = await new FoodItemService().GetFoodItemsByCategoryAsync(categoryID);
             FoodItemsByCategory.Clear();

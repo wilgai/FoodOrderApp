@@ -1,0 +1,35 @@
+﻿@model FoodOrderApp.Web.Models.CategoryViewModel
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Category</h4>
+<hr />
+<flash dismissable="true" />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Edit" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="CategoryID" />
+			<input type="hidden" asp-for="ImageUrl" />
+
+			<partial name="_Category" />
+
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-primary" />
+				<a asp-action="Index" class="btn btn-success">Back to List</a>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-4">
+		<img src="@Model.ImageUrl" style="width:200px;height:200px;max-width: 100%; height: auto;" />
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

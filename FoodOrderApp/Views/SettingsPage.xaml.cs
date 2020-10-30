@@ -14,8 +14,8 @@ namespace FoodOrderApp.Views
 
         async void ButtonCategories_Clicked(System.Object sender, System.EventArgs e)
         {
-            var acd = new AddCategoryData();
-            await acd.AddCategoriesAsync();
+            //var acd = new AddCategoryData();
+            //await acd.AddCategoriesAsync();
         }
 
         async void ButtonProducts_Clicked(System.Object sender, System.EventArgs e)

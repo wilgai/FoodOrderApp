@@ -50,10 +50,10 @@ namespace FoodOrderApp.Services
         }
 
 
-        public async Task<ObservableCollection<Itemplace>> GetFoodItemsByCategoryAsync(int categoryID)
+        public async Task<ObservableCollection<Itemplace>> GetFoodItemsByCategoryAsync(string categoryID)
         {
             var foodItemsByPlace = new ObservableCollection<Itemplace>();
-            var items = (await GetPlaceItemsAsync()).Where(p => p.CategoryID == categoryID).ToList();
+            var items = (await GetPlaceItemsAsync()).Where(p => p.CategoryID.ToString() == categoryID).ToList();
             foreach (var item in items)
             {
                 foodItemsByPlace.Add(item);

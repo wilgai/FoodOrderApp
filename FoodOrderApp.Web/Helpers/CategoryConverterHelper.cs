@@ -11,10 +11,10 @@ namespace FoodOrderApp.Web.Helpers
     {
         public Category ToCategory(CategoryViewModel model, string imageUrl)
         {
-            Guid Id = Guid.NewGuid();
+            
             return new Category
             {
-                CategoryID = Id.ToString(),
+                CategoryID =model.CategoryID,
                 ImageUrl = imageUrl,
                 CategoryName = model.CategoryName,
                 CategoryPoster=model.CategoryPoster

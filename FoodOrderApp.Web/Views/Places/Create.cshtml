@@ -1,0 +1,42 @@
+﻿@model FoodOrderApp.Web.Models.ItemplaceViewModel
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Category</h4>
+<flash dismissable="true" />
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create"  name="cat" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+			<partial name="_Itemplace" />
+
+			<div class="form-group">
+				
+				<input type="submit" value="Create" class="btn btn-primary" onclick="return validateR();"  />
+				<a asp-action="Index" class="btn btn-success">Back to List</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script Language="JavaScript">
+	function validateR() {
+		var selectedCombobox = (cat.category.value);
+		if (selectedCombobox == "0" || selectedCombobox == "") {
+			document.getElementById("error").innerHTML = "Select a category";
+			return false;
+		}
+		return true;
+	}
+</script>
+}
+

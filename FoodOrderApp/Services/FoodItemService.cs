@@ -36,10 +36,10 @@ namespace FoodOrderApp.Services
             return products;
         }
 
-        public async Task<ObservableCollection<FoodItem>> GetFoodItemsByCategoryAsync(int categoryID)
+        public async Task<ObservableCollection<FoodItem>> GetFoodItemsByCategoryAsync(string categoryID)
         {
             var foodItemsByCategory = new ObservableCollection<FoodItem>();
-            var items = (await GetFoodItemsAsync()).Where(p => p.CategoryID == categoryID).ToList();
+            var items = (await GetFoodItemsAsync()).Where(p => p.CategoryID.ToString() == categoryID).ToList();
             foreach (var item in items)
             {
                 foodItemsByCategory.Add(item);

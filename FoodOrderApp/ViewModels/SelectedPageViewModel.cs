@@ -49,7 +49,7 @@ namespace FoodOrderApp.ViewModels
             GetLatestItems();
         }
 
-        private async void GetPlaceItemByFoodCategory(int iD)
+        private async void GetPlaceItemByFoodCategory(string iD)
         {
             var data = await new PlaceItemService().GetFoodItemsByCategoryAsync(iD);
             ItemsByPlaceByFoodCategory.Clear();

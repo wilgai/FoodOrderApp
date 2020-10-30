@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\fireBasefiles\" />
+    <Folder Include="wwwroot\images\fireBasefiles\localPlaces\" />
   </ItemGroup>
 
 </Project>

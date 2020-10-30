@@ -7,7 +7,7 @@ namespace FoodOrderApp.Web.Helpers
 {
     public interface IBlobHelper
     {
-        Task<string> UploadBlobAsync(FileStream file, string containerName);
+        Task<string> UploadBlobAsync(IFormFile file, string folderName, string container);
 
     }
 }
